@@ -1,24 +1,128 @@
-.visor {
-    width: 300px;
-    height: 150px;
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@font-face {
+    font-family: 'digital_7';
+    src: url('./digital_7/digital-7\ \(italic\).ttf');
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: grey;
+}
+.wrapper {
     border-style: double;
-    margin: 10px;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+    height: 400px;
+    margin: 5px;
+    background-color: rgb(0, 94, 255);
+}
+
+h1 {
+    font-family: 'digital_7';
+    color: yellow;
+}
+
+p, h2 {
+    margin: 0;
+    font-family: 'digital_7';
+}
+h2 {
+    display: flex;
+    align-items: center;
+    font-size: 40px;
+}
+
+p {
+    font-size: 25px;
+}
+
+.calc {
+    height: 30px;
+}
+
+.userinput {
+    height: 60px;
+}
+
+.calc, .userinput {
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    padding: 5px;
+}
+
+.visor {
+    width: 200px;
+    height: 100px;
+    border-style: double;
+    border-radius: 5px;
+    margin: 15px;
     display: flex;
     align-items: flex-end;
-    padding: 5px;
     flex-direction: column;
-}
-
-.calculation {
-    border-style: dotted;
-    border-color: pink;
-}
-
-.input {
-    border-style: dashed;
-    border-color: greenyellow;
+    background-color: rgb(202, 202, 49);
 }
 
 .numbers, .operators {
     padding: 5px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button, .zero {
+    font-size: 25px;
+    margin: 5px;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    background-color: rgb(212, 212, 212);
+}
+
+.operator {
+    background-color: grey;
+}
+
+.AC {
+    font-size: 19px;
+    background-color: red;
+    color: white;
+    justify-content: center;
+    text-align: center;
+}
+
+.zero {
+    width: 95px;
+}
+
+.equal {
+    background-color: blue;
+    color: white;
+}
+
+#footer {
+    text-align: center;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    font-family: "Roboto", sans-serif;
+    color: yellow;
+}
+
+a, a:visited {
+    color: yellow;
+
 }

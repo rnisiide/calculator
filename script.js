@@ -1,4 +1,4 @@
-console.log(`Hello World!`)
+console.log(`Welcome to the most advanced CALCULATOR!!!`)
 const one = document.getElementById('1');
 const two = document.getElementById('2');
 const three = document.getElementById('3');
@@ -18,11 +18,13 @@ const clear = document.getElementById('clear');
 const input = document.getElementById('input');
 const calculation = document.getElementById('calculation');
 const negate = document.getElementById('negate');
-const decimal = document.getElementById('decimal')
+const decimal = document.getElementById('decimal');
+const backspace = document.getElementById('backspace');
 let calculationValue;
 let inputValue = '';
 let num;
 let operator;
+let deletedString;
 
 function changeValue(num) {
     if  (input.textContent == '0') {
@@ -93,6 +95,12 @@ zero.addEventListener('click', function() {
     changeValue(num);
 })
 
+backspace.addEventListener('click', function() {
+    deletedString = inputValue.slice(0, -1);
+    inputValue = deletedString;
+    input.textContent = inputValue;
+})
+
 function calculateUndefined(op) {
     operator = op;
     calculationValue = parseFloat(inputValue);
@@ -161,7 +169,7 @@ division.addEventListener('click', function() {
         calculateUndefined('/')
     } else if (calculationValue != undefined) {
         if (inputValue == '0') {
-            input.textContent = `Can't divide by zero. Please select another number!!`
+            input.textContent = `Can't divide by zero!!`
         } else if (inputValue == '') {
             operator = '/';
             calculation.textContent = `${calculationValue} ${operator}`;
@@ -232,7 +240,7 @@ window.onkeydown = function (e) {
             calculateUndefined(e.key)
         } else if (calculationValue != undefined) {
             if (inputValue == '0') {
-                input.textContent = `Can't divide by zero. Please select another number!!`
+                input.textContent = `Can't divide by zero!!`
             } else if (inputValue == '') {
                 operator = e.key;
                 calculation.textContent = `${calculationValue} ${operator}`;
@@ -254,5 +262,9 @@ window.onkeydown = function (e) {
         input.textContent = '0';
         calculation.textContent = '';
         calculationValue = 0;
+    } else if (e.key == 'Backspace') {
+        deletedString = inputValue.slice(0, -1);
+        inputValue = deletedString;
+        input.textContent = inputValue;
     }
 };

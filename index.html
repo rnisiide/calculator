@@ -8,38 +8,46 @@
     <title>Calculator - TOP Assignment</title>
 </head>
 <body>
+    <h1>The world's most advanced calculator</h1>
     <div class="wrapper">
         <div class="visor"> 
-            <div> <p id="calculation"></p>  </div>
-            <div> <h1 id="input">0</h1> </div>
+            <div class="calc"> <p id="calculation"></p>  </div>
+            <div class="userinput"> <h2 id="input">0</h2> </div>
         </div>
-        <div class="numbers">
-            <button id="1" data-key="49">1</button>
-            <button id="2" data-key="50">2</button>
-            <button id="3" data-key="51">3</button>
-            <button id="4" data-key="52">4</button>
-            <button id="5" data-key="53">5</button>
-            <button id="6" data-key="54">6</button>
-            <button id="7" data-key="55">7</button>
-            <button id="8" data-key="56">8</button>
-            <button id="9" data-key="57">9</button>
-            <button id="0" data-key="48">0</button>
+        <div class="buttons">
+            <div id="line1">
+                <button id="clear" class="button AC">AC</button>
+                <button id="negate" class="button operator">+-</button>
+                <button id="backspace" class="button operator"> &#8592; </button>
+                <button id="division" class="button operator">/</button>
+            </div>
+            <div id="line2">
+                <button id="7" class="button number">7</button>
+                <button id="8" class="button number">8</button>
+                <button id="9" class="button number">9</button>
+                <button id="multiplication" class="button operator">*</button>
+            </div>
+            <div id="line3">
+                <button id="4" class="button number">4</button>
+                <button id="5" class="button number">5</button>
+                <button id="6" class="button number">6</button>
+                <button id="minus" class="button operator">-</button>
+            </div>
+            <div id="line4">
+                <button id="1" class="button number">1</button>
+                <button id="2" class="button number">2</button>
+                <button id="3" class="button number">3</button>
+                <button id="sum" class="button operator">+</button>
+            </div>
+            <div id="line5">
+                <button id="0" class="zero">0</button>
+                <button id="decimal" class="button operator">.</button>
+                <button id="equal" class="button equal">=</button>
+            </div>
         </div>
-        <div class='operators'>
-            <button id="negate" data-key="">+-</button>
-            <button id="decimal" data-key="108">.</button>
-            <button id="sum" data-key="107">+</button>
-            <button id="minus" data-key="109">-</button>
-            <button id="multiplication" data-key="106">*</button>
-            <button id="division" data-key="191">/</button>
-            <button id="equal" data-key="13">=</button>
-            <button id="clear" data-key="46">C</button>
-        </div>
-
-
-
-
     </div>
+    <div id="footer">Built and designed by <a href="https://github.com/rnisiide"> Ricardo Nisiide</a> | <a href="https://github.com/rnisiide/calculator">Github Source</a></div> 
+
     <script src="./script.js"></script>
 </body>
 </html>
