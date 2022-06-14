@@ -47,51 +47,51 @@ decimal.addEventListener('click', function() {
 
 
 one.addEventListener('click', function() {
-    num = 1;
+    num = '1';
     changeValue(num);
 })
 
 two.addEventListener('click', function() {
-    num = 2;
+    num = '2';
     changeValue(num);
 })
 
 three.addEventListener('click', function() {
-    num = 3;
+    num = '3';
     changeValue(num);
 })
 
 four.addEventListener('click', function() {
-    num = 4;
+    num = '4';
     changeValue(num);
 })
 
 five.addEventListener('click', function() {
-    num = 5;
+    num = '5';
     changeValue(num);
 })
 
 six.addEventListener('click', function() {
-    num = 6;
+    num = '6';
     changeValue(num);
 })
 
 seven.addEventListener('click', function() {
-    num = 7;
+    num = '7';
     changeValue(num);
 })
 
 eight.addEventListener('click', function() {
-    num = 8;
+    num = '8';
     changeValue(num);})
 
 nine.addEventListener('click', function() {
-    num = 9;
+    num = '9';
     changeValue(num);
 })
 
 zero.addEventListener('click', function() {
-    num = 0;
+    num = '0';
     changeValue(num);
 })
 
