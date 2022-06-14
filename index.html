@@ -9,43 +9,37 @@
 </head>
 <body>
     <div class="wrapper">
-        <div class="visor"> 69692424</div>
+        <div class="visor"> 
+            <div> <p id="calculation"></p>  </div>
+            <div> <h1 id="input">0</h1> </div>
+        </div>
         <div class="numbers">
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>0</button>
+            <button id="1" data-key="49">1</button>
+            <button id="2" data-key="50">2</button>
+            <button id="3" data-key="51">3</button>
+            <button id="4" data-key="52">4</button>
+            <button id="5" data-key="53">5</button>
+            <button id="6" data-key="54">6</button>
+            <button id="7" data-key="55">7</button>
+            <button id="8" data-key="56">8</button>
+            <button id="9" data-key="57">9</button>
+            <button id="0" data-key="48">0</button>
         </div>
         <div class='operators'>
-            <button>+</button>
-            <button>-</button>
-            <button>*</button>
-            <button>/</button>
-            <button>=</button>
-            <button>C</button>
+            <button id="negate" data-key="">+-</button>
+            <button id="decimal" data-key="108">.</button>
+            <button id="sum" data-key="107">+</button>
+            <button id="minus" data-key="109">-</button>
+            <button id="multiplication" data-key="106">*</button>
+            <button id="division" data-key="191">/</button>
+            <button id="equal" data-key="13">=</button>
+            <button id="clear" data-key="46">C</button>
         </div>
 
 
 
 
     </div>
-
-
-
-
-    <!--
-        Create a basic HTML calculator with buttons for each digit, each of the above functions and an “Equals” key.
-Do not worry about wiring up the JS just yet.
-There should also be a display for the calculator, go ahead and fill it with some dummy numbers so you can get it looking right.
-Add a “clear” button.
-
-    -->
     <script src="./script.js"></script>
 </body>
 </html>

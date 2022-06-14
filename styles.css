@@ -1,10 +1,24 @@
 .visor {
     width: 300px;
-    height: 100px;
+    height: 150px;
     border-style: double;
     margin: 10px;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    align-items: flex-end;
+    padding: 5px;
+    flex-direction: column;
+}
+
+.calculation {
+    border-style: dotted;
+    border-color: pink;
+}
+
+.input {
+    border-style: dashed;
+    border-color: greenyellow;
+}
+
+.numbers, .operators {
     padding: 5px;
 }
