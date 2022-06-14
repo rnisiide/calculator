@@ -47,51 +47,51 @@ decimal.addEventListener('click', function() {
 
 
 one.addEventListener('click', function() {
-    num = '1';
+    num = 1;
     changeValue(num);
 })
 
 two.addEventListener('click', function() {
-    num = '2';
+    num = 2;
     changeValue(num);
 })
 
 three.addEventListener('click', function() {
-    num = '3';
+    num = 3;
     changeValue(num);
 })
 
 four.addEventListener('click', function() {
-    num = '4';
+    num = 4;
     changeValue(num);
 })
 
 five.addEventListener('click', function() {
-    num = '5';
+    num = 5;
     changeValue(num);
 })
 
 six.addEventListener('click', function() {
-    num = '6';
+    num = 6;
     changeValue(num);
 })
 
 seven.addEventListener('click', function() {
-    num = '7';
+    num = 7;
     changeValue(num);
 })
 
 eight.addEventListener('click', function() {
-    num = '8';
+    num = 8;
     changeValue(num);})
 
 nine.addEventListener('click', function() {
-    num = '9';
+    num = 9;
     changeValue(num);
 })
 
 zero.addEventListener('click', function() {
-    num = '0';
+    num = 0;
     changeValue(num);
 })
 
@@ -137,6 +137,7 @@ sum.addEventListener('click', function() {
     } else if (calculationValue != undefined) {
         if (inputValue == '') {
             operator = '+';
+            calculationValue = 0;
             calculation.textContent = `${calculationValue} ${operator}`;
         } else {
             calculateFinal('+')
@@ -148,6 +149,7 @@ minus.addEventListener('click', function() {
     } else if (calculationValue != undefined) {
         if (inputValue == '') {
             operator = '-';
+            calculationValue = 0;
             calculation.textContent = `${calculationValue} ${operator}`;
         } else {
             calculateFinal('-')
@@ -159,6 +161,7 @@ multiplication.addEventListener('click', function() {
     } else if (calculationValue != undefined) {
         if (inputValue == '') {
             operator = '*';
+            calculationValue = 0;
             calculation.textContent = `${calculationValue} ${operator}`;
         } else {
             calculateFinal('*')
@@ -179,19 +182,18 @@ division.addEventListener('click', function() {
 
 equal.addEventListener('click', function () {
     if (inputValue == '') {
-        clearConsole(0);
+        input.textContent = calculationValue;
+        calculation.textContent = '';
+        calculationValue = 0;
     } else {
     calculationValue = operate(operator, calculationValue, 
         parseFloat(inputValue));
     inputValue = '';
-    clearConsole(0);
-}})
-
-function clearConsole(a) {
     input.textContent = calculationValue;
     calculation.textContent = '';
-    calculationValue = a;
-}
+    calculationValue = 0;
+}})
+
 
 function operate(c, a, b) {
     if (c == '+') {return a + b};
@@ -249,11 +251,17 @@ window.onkeydown = function (e) {
             }}
     } else if (e.key == 'Enter') {
         if (inputValue == '') {
-            clearConsole(0);
-        } else {calculationValue = operate(operator, calculationValue, 
+            input.textContent = calculationValue;
+            calculation.textContent = '';
+            calculationValue = 0;
+        } else {
+        calculationValue = operate(operator, calculationValue, 
             parseFloat(inputValue));
-            inputValue = '';
-            clearConsole(0);}
+        inputValue = '';
+        input.textContent = calculationValue;
+        calculation.textContent = '';
+        calculationValue = 0;
+        } 
     } else if (e.key == '.' || e.key == ',') {
         if (inputValue.includes('.') == false) {
             inputValue += '.';

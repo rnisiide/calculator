@@ -28,6 +28,9 @@ body {
 h1 {
     font-family: 'digital_7';
     color: yellow;
+    text-align: center;
+    padding: 5px;
+    line-height: 1.2em;
 }
 
 p, h2 {
