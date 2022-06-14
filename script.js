@@ -137,7 +137,6 @@ sum.addEventListener('click', function() {
     } else if (calculationValue != undefined) {
         if (inputValue == '') {
             operator = '+';
-            calculationValue = 0;
             calculation.textContent = `${calculationValue} ${operator}`;
         } else {
             calculateFinal('+')
@@ -149,7 +148,6 @@ minus.addEventListener('click', function() {
     } else if (calculationValue != undefined) {
         if (inputValue == '') {
             operator = '-';
-            calculationValue = 0;
             calculation.textContent = `${calculationValue} ${operator}`;
         } else {
             calculateFinal('-')
@@ -161,7 +159,6 @@ multiplication.addEventListener('click', function() {
     } else if (calculationValue != undefined) {
         if (inputValue == '') {
             operator = '*';
-            calculationValue = 0;
             calculation.textContent = `${calculationValue} ${operator}`;
         } else {
             calculateFinal('*')
