@@ -171,7 +171,7 @@ division.addEventListener('click', function() {
     if (calculationValue == undefined) {
         calculateUndefined('/')
     } else if (calculationValue != undefined) {
-        if (inputValue == '0') {
+        if (inputValue == '0'|| inputValue == '') {
             input.textContent = `Can't divide by zero!!`
         } else if (inputValue == '') {
             operator = '/';
@@ -241,7 +241,7 @@ window.onkeydown = function (e) {
         if (calculationValue == undefined) {
             calculateUndefined(e.key)
         } else if (calculationValue != undefined) {
-            if (inputValue == '0') {
+            if (inputValue == '0'|| inputValue == '') {
                 input.textContent = `Can't divide by zero!!`
             } else if (inputValue == '') {
                 operator = e.key;
