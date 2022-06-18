@@ -16,7 +16,7 @@ const division = document.getElementById('division');
 const equal = document.getElementById('equal');
 const clear = document.getElementById('clear');
 const input = document.getElementById('input');
-const calculation = document.getElementById('calculation');
+const display = document.getElementById('display');
 const negate = document.getElementById('negate');
 const decimal = document.getElementById('decimal');
 const backspace = document.getElementById('backspace');
@@ -35,7 +35,7 @@ function changeValue(num) {
 }};
 
 negate.addEventListener('click', function() {
-    inputValue = -parseInt(inputValue);
+    inputValue = -parseFloat(inputValue);
     input.textContent = inputValue;
 });
 
@@ -101,112 +101,98 @@ backspace.addEventListener('click', function() {
     input.textContent = inputValue;
 })
 
-function calculateUndefined(op) {
-    operator = op;
-    calculationValue = parseFloat(inputValue);
-    calculation.textContent = `${inputValue} ${op}`;
-    inputValue = '';
-    input.textContent = inputValue;
-} 
-/*the function above looks complicated, but what it does is:
+
+
+sum.addEventListener('click', () => {startButton('+')});
+minus.addEventListener('click', () => {startButton('-')});
+multiplication.addEventListener('click', () => {startButton('*')});
+division.addEventListener('click', () => {startButton('/')})
+clear.addEventListener('click', () => {clearConsole()})
+
+function startButton(op) {
+        if (calculationValue == undefined) {
+            inputValue = input.textContent;
+            operator = op;
+            calculationValue = parseFloat(inputValue);
+            display.textContent = `${inputValue} ${op}`;
+            inputValue = '';
+            input.textContent = inputValue;           
+        } else if (calculationValue != undefined) {
+             if (inputValue == '') {
+                operator = op;
+                display.textContent = `${calculationValue} ${operator}`;
+            } else if (display.textContent == '') {
+                operator = op;
+                calculationValue = parseFloat(inputValue);
+                display.textContent = `${calculationValue} ${operator}`;
+                inputValue = '';
+                input.textContent = inputValue; 
+            } else {
+                calculationValue = operate(operator, calculationValue, 
+                    parseFloat(inputValue));
+                operator = op;
+                display.textContent = `${calculationValue} ${operator}`;
+                inputValue = '';
+                input.textContent = inputValue;
+            }}}
+
+ /*FUNCTION EXPLANATION:
+When undefined:
 - get the selected operator and set it to the function
 - get the inputed number
 - display number and operator on top
 - set input back to '' so user can input a new number 
 this part is used when the user has cleared the console or refreshed the page,
 and still hasn't inputed any number previously
-*/
 
-function calculateFinal(op) {
-    calculationValue = operate(operator, calculationValue, 
-        parseFloat(inputValue));
-    operator = op;
-    calculation.textContent = `${calculationValue} ${operator}`;
-    inputValue = '';
-    input.textContent = inputValue;}
-/* the function above is triggered when the user has already inputed a number, selected an operator, and inputed a NEW number, and it will:
+The second part, the function is triggered when the user has already inputed a number, selected an operator, and inputed a NEW number, and it will:
 - do the math for the first arrangement
 - set a new operator in case the user has selected a new one
 - display operation and new operator 
 - set input back to '' so user can input a new number 
 */
 
-sum.addEventListener('click', function() {
-    if (calculationValue == undefined) {        
-        calculateUndefined('+');
-    } else if (calculationValue != undefined) {
-        if (inputValue == '') {
-            operator = '+';
-            calculation.textContent = `${calculationValue} ${operator}`;
-        } else {
-            calculateFinal('+')
-        }}})
+function operate(c, a, b) {
+    if (c == '/' && inputValue == '0') {
+        alert(`Can't divide by zero. You destroyed the calculator.\n\nRebooting calculator!!`);
+        clearConsole();
+        return 0;
+    } else if (c == '+') {return a + b;
+    } else if (c == '-') {return a - b;
+    } else if (c == '*') {return a * b;
+    } else if (c == '/') {return a / b
+}}
+      
 
-minus.addEventListener('click', function() {
-    if (calculationValue == undefined) {
-        calculateUndefined('-')
-    } else if (calculationValue != undefined) {
-        if (inputValue == '') {
-            operator = '-';
-            calculation.textContent = `${calculationValue} ${operator}`;
-        } else {
-            calculateFinal('-')
-        }}})
+equal.addEventListener('click', () => { equalize() });
 
-multiplication.addEventListener('click', function() {
-    if (calculationValue == undefined) {
-        calculateUndefined('*')
-    } else if (calculationValue != undefined) {
-        if (inputValue == '') {
-            operator = '*';
-            calculation.textContent = `${calculationValue} ${operator}`;
-        } else {
-            calculateFinal('*')
-        }}})
-
-division.addEventListener('click', function() {
-    if (calculationValue == undefined) {
-        calculateUndefined('/')
-    } else if (calculationValue != undefined) {
-        if (inputValue == '0'|| inputValue == '') {
-            input.textContent = `Can't divide by zero!!`
-        } else if (inputValue == '') {
-            operator = '/';
-            calculation.textContent = `${calculationValue} ${operator}`;
-        } else {
-            calculateFinal('/')
-        }}})
-
-equal.addEventListener('click', function () {
+function equalize() {   
     if (inputValue == '') {
         input.textContent = calculationValue;
-        calculation.textContent = '';
-        calculationValue = 0;
-    } else {
+        display.textContent = '';
+    } else {      
+        console.log(`Antes: inputvalue ${inputValue} calculationvalue ${calculationValue}`)
     calculationValue = operate(operator, calculationValue, 
         parseFloat(inputValue));
-    inputValue = '';
     input.textContent = calculationValue;
-    calculation.textContent = '';
+    display.textContent = '';
+    inputValue = '';
+}};
+
+
+
+
+function clearConsole() {
+    input.textContent = '0';
+    display.textContent = '';
     calculationValue = 0;
-}})
-
-
-function operate(c, a, b) {
-    if (c == '+') {return a + b};
-    if (c == '-') {return a - b};
-    if (c == '*') {return a * b};
-    if (c == '/') {return a / b};
 }
 
-clear.addEventListener('click', function() {
-    input.textContent = '0';
-    calculation.textContent = '';
-    calculationValue = 0;
-})
-
-
-//below are just key bindings to the same functions
+/*
+below are just key bindings. functions are just repeated. 
+on a later moment will revisit and try to bind everything without 
+repeating all functions and buttons
+*/
 
 window.onkeydown = function (e) {
     console.log(e);
@@ -225,47 +211,18 @@ window.onkeydown = function (e) {
     } else if (e.key == '+' ||
                 e.key == '-' ||
                 e.key == '*') { 
-                    if(calculationValue == undefined) 
-                    {calculateUndefined(e.key)
-                    } else if (calculationValue != undefined) {
-                        if (inputValue == '') {
-                        operator = e.key;
-                        calculation.textContent = `${calculationValue} ${operator}`;
-                        } else {
-                        calculateFinal(e.key)
-                    }}
+                    startButton(e.key);
     } else if (e.key == '/') {
-        if (calculationValue == undefined) {
-            calculateUndefined(e.key)
-        } else if (calculationValue != undefined) {
-            if (inputValue == '0'|| inputValue == '') {
-                input.textContent = `Can't divide by zero!!`
-            } else if (inputValue == '') {
-                operator = e.key;
-                calculation.textContent = `${calculationValue} ${operator}`;
-            } else {
-                calculateFinal(e.key)
-            }}
+        startButton(e.key);
     } else if (e.key == 'Enter') {
-        if (inputValue == '') {
-            input.textContent = calculationValue;
-            calculation.textContent = '';
-            calculationValue = 0;
-        } else {
-        calculationValue = operate(operator, calculationValue, 
-            parseFloat(inputValue));
-        inputValue = '';
-        input.textContent = calculationValue;
-        calculation.textContent = '';
-        calculationValue = 0;
-        } 
+        equalize();
     } else if (e.key == '.' || e.key == ',') {
         if (inputValue.includes('.') == false) {
             inputValue += '.';
             input.textContent = inputValue;}
     } else if (e.key == 'Delete') {
         input.textContent = '0';
-        calculation.textContent = '';
+        display.textContent = '';
         calculationValue = 0;
     } else if (e.key == 'Backspace') {
         deletedString = inputValue.slice(0, -1);
